@@ -1,5 +1,7 @@
 # UnityBackup.py - Unity Project Backup and Cleanup Tool
 
+![screenshot1.png](screenshot1.png)
+
 ## Overview
 `unitybackup.py` is a Python script designed to backup Unity projects by creating ZIP archives of them, while optionally cleaning temporary/cache folders beforehand and deleting the original directories after a successful backup. This is useful for archiving projects, freeing up disk space, and ensuring clean backups without bloat from Unity's generated files.
 
@@ -35,7 +37,7 @@ Run the script from the command line (e.g., Command Prompt, PowerShell, or termi
 
 ### Basic Syntax
 ```
-python unitybackup.py [root_path] [/c] [/d]
+python unitybackup.py [root_path] [-c] [-d]
 ```
 
 - **`root_path`** (optional positional argument): Path to the directory containing Unity projects (default: current directory `.`).
@@ -57,26 +59,26 @@ python unitybackup.py [root_path] [/c] [/d]
 
 3. **Backup a specific folder with cleanup and delete:**
    ```
-   python unitybackup.py "C:\MyUnityProjects" /c /d
+   python unitybackup.py "C:\MyUnityProjects" -c -d
    ```
    - Processes projects in `C:\MyUnityProjects`, cleans temp files, zips, then deletes originals.
 
 4. **Just cleanup (no zipping):**
-   - The script always zips if projects are found. For cleanup-only, use `/c` without further actions, or modify the script.
+   - The script always zips if projects are found. For cleanup-only, use `-c` without further actions, or modify the script.
 
 ### Output
 - ZIP files are created in the root path (e.g., `MyProject.zip`).
 - Progress bars show:
   - Overall project processing.
-  - Per-project temp cleaning (if `/c`).
+  - Per-project temp cleaning (if `-c`).
   - Per-project file zipping.
 - Logs success/failures and warnings (e.g., locked files).
 
 ## Options Details
 | Flag | Description | Default |
 |------|-------------|---------|
-| `/c` | Clean temp folders before zipping: Deletes `Library/`, `Temp/`, `obj/`, `Logs/`, `.git/`, `.vs/` recursively if they exist. Shows progress. Proceeds to zip even on partial failures. | Off |
-| `/d` | **Dangerous!** Deletes the entire original project directory after a successful zip (ZIP exists, has content, no errors). Prompts for "YES" confirmation. | Off |
+| `-c` | Clean temp folders before zipping: Deletes `Library/`, `Temp/`, `obj/`, `Logs/`, `.git/`, `.vs/` recursively if they exist. Shows progress. Proceeds to zip even on partial failures. | Off |
+| `-d` | **Dangerous!** Deletes the entire original project directory after a successful zip (ZIP exists, has content, no errors). Prompts for "YES" confirmation. | Off |
 
 - **Exclude Patterns (always applied during zip):** `Library/`, `Temp/`, `obj/`, `Logs/`, `.git/`, `.vs/`.
 - **Project Detection:** Scans immediate subdirectories for those containing `Assets/`. For deeper nesting, edit the `unity_projects` line in the script.
