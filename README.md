@@ -37,7 +37,12 @@
 ## Usage
 Run the script from the command line (e.g., Command Prompt, PowerShell, or terminal).
 
+
 ### Basic Syntax
+```
+unitybackup.bat [root_path] [-c] [-d]
+```
+OR
 ```
 python unitybackup.py [root_path] [-c] [-d]
 ```
