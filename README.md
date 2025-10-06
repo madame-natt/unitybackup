@@ -2,6 +2,8 @@
 
 ![screenshot1.png](screenshot1.png)
 
+![screenshot2.png](screenshot2.png)
+
 ## Overview
 `unitybackup.py` is a Python script designed to backup Unity projects by creating ZIP archives of them, while optionally cleaning temporary/cache folders beforehand and deleting the original directories after a successful backup. This is useful for archiving projects, freeing up disk space, and ensuring clean backups without bloat from Unity's generated files.
 
